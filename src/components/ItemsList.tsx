@@ -6,19 +6,11 @@ import Item from './Item'
 
 interface ItemsListProps {
 	className?: string
+	itemsList: IItem[]
 }
 
-export default function ItemsList({ className }: ItemsListProps) {
-	const [items, setItems] = useState<IItem[]>(
-		Array(29).fill({
-			id: 0,
-			imagePath: '/products/nike.png',
-			title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-			cost: 12999,
-			isFavorite: true,
-			isInCart: false,
-		})
-	)
+export default function ItemsList({ className, itemsList }: ItemsListProps) {
+	const [items, setItems] = useState<IItem[]>(itemsList)
 
 	const toggleFavorite = (id: number) => {
 		setItems(prevItems => {

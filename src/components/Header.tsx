@@ -1,9 +1,10 @@
 import Logo from '@/components/Logo'
 import { CircleUserRound, Heart, ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Header() {
 	return (
-		<header className='p-11 flex flex-row justify-between border border-b-gray-500/30'>
+		<header className='p-7 flex flex-row justify-between border border-b-gray-500/30'>
 			<div className='flex flex-row items-center'>
 				<Logo />
 				<div className='flex flex-col ml-4'>
@@ -12,18 +13,24 @@ export default function Header() {
 				</div>
 			</div>
 			<div className='flex flex-row items-center gap-8 text-gray-500/75'>
-				<div className='flex flex-row gap-1 items-center'>
-					<ShoppingCart size={18} />
-					<p>1205₽</p>
-				</div>
-				<div className='flex flex-row gap-1 items-center'>
-					<Heart size={18} />
-					<p>Избранное</p>
-				</div>
-				<div className='flex flex-row gap-1 items-center'>
-					<CircleUserRound size={18} />
-					<p>Избранное</p>
-				</div>
+				<Link href='/cart'>
+					<div className='flex flex-row gap-1 items-center'>
+						<ShoppingCart size={18} />
+						<p>1205₽</p>
+					</div>
+				</Link>
+				<Link href='/favorites'>
+					<div className='flex flex-row gap-1 items-center'>
+						<Heart size={18} />
+						<p>Избранное</p>
+					</div>
+				</Link>
+				<Link href='/orders'>
+					<div className='flex flex-row gap-1 items-center'>
+						<CircleUserRound size={18} />
+						<p>Профиль</p>
+					</div>
+				</Link>
 			</div>
 		</header>
 	)
