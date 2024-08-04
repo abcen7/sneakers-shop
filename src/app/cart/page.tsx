@@ -3,25 +3,18 @@
 import BackButton from '@/components/Buttons/BackButton'
 import ItemsList from '@/components/ItemsList'
 import ItemsNotFound from '@/components/ItemsNotFound'
-import { Item } from '@/types/Item'
-import { useState } from 'react'
+import { RootState } from '@/store/store'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
-export default function Orders() {
-	const [items] = useState<Item[]>(
-		Array(0).fill({
-			id: 0,
-			imagePath: '/products/nike.png',
-			title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-			cost: 12999,
-			isFavorite: true,
-			isInCart: false,
-		})
-	)
+export default function Cart() {
+	const items = useSelector((state: RootState) => state.cart.items)
+
 	return (
 		<>
 			<div className='flex flex-row gap-4 items-center'>
 				<BackButton />
-				<h1 className='text-2xl font-bold'>Мои заказы</h1>
+				<h1 className='text-2xl font-bold'>Корзина</h1>
 			</div>
 			{items.length === 0 ? (
 				<ItemsNotFound

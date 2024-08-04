@@ -7,17 +7,17 @@ import { useState } from 'react'
 
 export default function Home() {
 	const [items] = useState<Item[]>(
-		Array(29).fill({
+		Array(1).fill({
 			id: 0,
 			imagePath: '/products/nike.png',
 			title: 'Мужские Кроссовки Nike Blazer Mid Suede',
 			cost: 12999,
-			isFavorite: true,
+			isFavorite: false,
 			isInCart: false,
 		})
 	)
 	return (
-		<main className='mx-16 my-11'>
+		<>
 			<div className='w-full relative h-[300px]'>
 				<Image
 					src={'/assets/banner.svg'}
@@ -31,6 +31,6 @@ export default function Home() {
 				className='mt-5 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'
 				itemsList={items}
 			/>
-		</main>
+		</>
 	)
 }
